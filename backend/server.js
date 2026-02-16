@@ -15,13 +15,9 @@ const server = http.createServer(app);
 //setup socket.io
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173", //frontend URL
+    origin: ["http://localhost:5173","https://real-time-poll-kvhc.vercel.app/"], //frontend URL
     methods: ["GET", "POST"],
   },
-});
-
-app.get("/", (req, res) => {
-  res.send("Real-Time Poll API is running 🚀");
 });
 
 //make io accessible in roots
