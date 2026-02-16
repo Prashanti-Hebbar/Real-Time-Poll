@@ -20,6 +20,10 @@ const io = new Server(server, {
   },
 });
 
+app.get("/", (req, res) => {
+  res.send("Real-Time Poll API is running 🚀");
+});
+
 //make io accessible in roots
 app.set("io", io);
 
