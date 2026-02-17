@@ -57,8 +57,14 @@ router.post("/:id/vote", async (req,res)=>{
   return res.status(400).json({ message: "Invalid option selected" });
 }
 
-        const ip =
-      req.headers["x-forwarded-for"] || req.socket.remoteAddress;
+      //   const ip =
+      // req.headers["x-forwarded-for"] || req.socket.remoteAddress;
+
+      let ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
+
+    if (ip && ip.includes(",")) {
+      ip = ip.split(",")[0].trim();
+    }
 
         // Fairness mechanism 1: VoterId restriction
         if (poll.voters.includes(voterId)){
