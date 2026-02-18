@@ -1,252 +1,199 @@
-📊 Real-Time Polling Application
+<!-- Animated Header -->
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=28&duration=3000&color=00F7FF&center=true&vCenter=true&width=800&lines=Real-Time+Polling+Application;Built+with+MERN+%2B+Socket.io;Create+•+Share+•+Vote+•+Live+Update" />
+</p>
 
-A full-stack Real-Time Polling Web Application where users can create polls, share them via a link, and view live vote updates instantly using WebSockets.
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Live-success?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Frontend-Vercel-black?style=for-the-badge&logo=vercel" />
+  <img src="https://img.shields.io/badge/Backend-Render-46E3B7?style=for-the-badge&logo=render" />
+  <img src="https://img.shields.io/badge/Database-MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" />
+</p>
 
-Built using the MERN Stack + Socket.io
+---
 
-🌍 Live Deployment
+# 📊 Real-Time Polling Application
 
-🌐 Frontend (Vercel)
+> A full-stack **Real-Time Polling Web Application** that allows users to create polls, share links, and see live vote updates instantly using WebSockets.
+
+---
+
+## 🌍 Live Demo
+
+🔗 **Frontend**  
 👉 https://real-time-poll-kvhc.vercel.app/
 
-🚀 Backend (Render)
-👉 Hosted on Render
+---
 
-🗄 Database (MongoDB Atlas)
-👉 Cloud-hosted MongoDB
+# ✨ Features
 
-🚀 Features
-✅ 1. Poll Creation
+## 📝 Poll Creation
+- Create polls with a question  
+- Add minimum 2 options  
+- Auto-generate unique Poll ID  
+- Store data securely in MongoDB  
 
-Users can:
+---
 
-Create a poll with a question
+## 🔗 Shareable Poll Links
 
-Add minimum 2 options
-
-Store poll data in MongoDB
-
-Generate a unique Poll ID automatically
-
-✅ 2. Shareable Links
-
-Each poll generates a unique URL:
-
+```
 https://real-time-poll-kvhc.vercel.app/poll-room/:pollId
+```
 
+✔ Anyone with the link can vote  
+✔ Anyone can view live results  
+✔ Fully cloud-hosted  
 
-✔ Users can copy and share the link
-✔ Anyone with the link can vote
-✔ Anyone can view real-time results
+---
 
-✅ 3. Real-Time Result Updates
+## ⚡ Real-Time Updates
 
-Implemented using Socket.io
+Powered by **Socket.io**
 
-When a user votes:
+- Instant vote updates  
+- No page refresh required  
+- Sync across tabs, browsers & devices  
 
-Vote count updates instantly
+---
 
-All connected users in that poll room see updates
+## 🛡 Anti-Abuse Protection
 
-No page refresh required
+### 🔐 Unique Voter ID
+- UUID generated per browser  
+- Stored in localStorage  
+- Prevents duplicate votes  
 
-Real-time synchronization works across:
-
-Multiple tabs
-
-Multiple browsers
-
-Multiple devices
-
-✅ 4. Fairness / Anti-Abuse Mechanisms
-
-Your project includes two layered fairness protections:
-
-🔐 1️⃣ Unique Voter ID Restriction
-
-Each browser generates a UUID
-
-Stored in localStorage
-
-After voting:
-
-voterId is saved in MongoDB
-
-Same browser cannot vote again
-
-Prevents:
-
-Multiple votes from the same browser
-
-🌐 2️⃣ IP Address Restriction
-
-Backend captures:
-
+### 🌐 IP Restriction
+```js
 req.headers["x-forwarded-for"] || req.socket.remoteAddress
+```
+- Blocks repeated votes from same IP  
+- Reduces vote spamming  
+
+---
+
+# 🛠 Tech Stack
+
+### 🖥 Frontend
+<p>
+  <img src="https://skillicons.dev/icons?i=react,vite,js,html,css" />
+</p>
+
+### ⚙ Backend
+<p>
+  <img src="https://skillicons.dev/icons?i=nodejs,express,mongodb" />
+</p>
+
+### 🔌 Real-Time Engine
+<p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Socket-io.svg" height="50" />
+</p>
 
 
-IP address is stored in the poll document
+---
 
-If same IP tries to vote again → request blocked
+# 📦 Local Setup
 
-Prevents:
-
-Multiple votes from same network
-
-Basic vote spamming
-
-🛡 Together These Mechanisms Reduce:
-
-✔ Multiple votes from same browser
-✔ Multiple votes from same IP
-✔ Basic automated vote abuse
-
-✅ 5. Persistent Data Storage
-
-Using MongoDB Atlas
-
-Stored data includes:
-
-Question
-
-Options
-
-Vote counts
-
-Voter IDs
-
-IP addresses
-
-Created timestamp
-
-✔ Data persists after server restart
-✔ Polls remain accessible via link
-✔ Fully cloud-based storage
-
-🛠 Tech Stack
-🖥 Frontend
-
-React (Vite)
-
-React Router
-
-Axios
-
-Socket.io Client
-
-⚙ Backend
-
-Node.js
-
-Express.js
-
-MongoDB (Mongoose)
-
-Socket.io
-
-🚀 Deployment
-
-Frontend → Vercel
-
-Backend → Render
-
-Database → MongoDB Atlas
-
-📦 Local Installation
-1️⃣ Clone Repository
+## 1️⃣ Clone Repository
+```bash
 git clone <your-repository-url>
 cd Real-Time-Poll
+```
 
-2️⃣ Backend Setup
+## 2️⃣ Backend Setup
+```bash
 cd backend
 npm install
+```
 
-
-Create a .env file:
-
+Create `.env`:
+```env
 MONGO_URI=your_mongodb_connection_string
 PORT=5000
+```
 
-
-Run backend:
-
+Run:
+```bash
 nodemon server.js
+```
 
-3️⃣ Frontend Setup
+---
+
+## 3️⃣ Frontend Setup
+```bash
 cd frontend
 npm install
 npm run dev
+```
 
-
-Frontend runs at:
-
+Runs at:
+```
 http://localhost:5173
+```
 
-🔍 API Endpoints
-Method	Endpoint	Description
-POST	/poll	Create a poll
-GET	/poll/:id	Get poll details
-POST	/poll/:id/vote	Vote in a poll
-⚠️ Edge Cases Handled
+---
 
-✔ Poll must have minimum 2 options
-✔ Invalid poll ID returns 404
-✔ Invalid option index is rejected
-✔ Duplicate vote (same voterId) blocked
-✔ Duplicate vote (same IP) blocked
-✔ Real-time sync across multiple users
-✔ CORS configured properly for production
-✔ Environment-based PORT handling
+# 🔍 API Endpoints
 
-🚧 Known Limitations
+| Method | Endpoint          | Description        |
+|--------|-------------------|--------------------|
+| POST   | /poll             | Create poll        |
+| GET    | /poll/:id         | Get poll details   |
+| POST   | /poll/:id/vote    | Vote in poll       |
 
-⚠ IP-based restriction is not 100% reliable
+---
 
-Users behind same WiFi share IP
+# 🚧 Known Limitations
 
-VPN users can bypass IP restriction
+- IP restriction not 100% reliable  
+- Incognito resets localStorage  
+- No authentication  
+- No rate limiting  
 
-⚠ Incognito mode generates new voterId
+---
 
-localStorage resets
+# 🔮 Future Improvements
 
-⚠ No authentication system
+- 🔑 JWT / Google Authentication  
+- 🚦 Rate limiting  
+- 📊 Analytics Dashboard  
+- 🗳 Poll Expiration  
+- 📈 Export Results (CSV/PDF)  
 
-Users are anonymous
+---
 
-⚠ No rate limiting
+# 📊 Project Architecture
 
-API can be spammed
+```
+Client (React) 
+   ↓
+Express API (Node.js)
+   ↓
+MongoDB Atlas
+   ↕
+Socket.io (Real-Time Communication)
+```
 
-🔮 Future Improvements
+---
 
-🔑 Add authentication (JWT / Google Login)
+# 🎯 Project Status
 
-🧠 Device fingerprinting for stronger anti-abuse
+✅ Production Deployed  
+✅ Real-Time Sync  
+✅ Persistent Storage  
+✅ Anti-Abuse Protection  
 
-🚦 Rate limiting (express-rate-limit)
+---
 
-📊 Poll analytics dashboard
+# 👩‍💻 Author
 
-🗳 Poll expiration time
+**Prashanti Hebbar**  
+Full Stack Developer | MERN Stack  
 
-📱 Enhanced mobile UX
+<p align="center" style="font-size: 28px;">
+  Made with ❤️
+</p>
 
-🔒 HTTPS-only cookie-based vote tracking
 
-📈 Poll result export (CSV/PDF)
-
-🎯 Project Status
-
-✔ Poll creation
-✔ Shareable links
-✔ Real-time updates
-✔ Fairness mechanisms
-✔ Persistent database storage
-✔ Production deployment
-
-👩‍💻 Author
-
-Prashanti Hebbar
-Full Stack Developer | MERN Stack
+---
